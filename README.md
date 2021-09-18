@@ -1,2 +1,3 @@
 # typehub
-Hack The North 2021 
+CHANGELOG 09/18/21
+- initial commit
