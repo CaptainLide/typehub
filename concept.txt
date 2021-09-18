@@ -17,4 +17,4 @@ For Visuals:
 1. Minimalistic feel (side scroller) 
 2. each completed word moves model to the right to progress through side scroller
 
-Elina was here
+
