@@ -1,0 +1,18 @@
+Typing Game concept:
+
+1. User has 60 seconds to complete x number of words. 
+2. If user completes x number of words within 60 seconds user then proceeds to next level. 
+3. x number of words is multiple by 1.15 per completion. 
+4. after 3 cycles required number of seconds is lowered. 
+
+
+For Example:
+
+1. 60 seconds complete 50 words first cycle 
+2. user then proceeds to complete 75 in 60 seconds after completion
+3. after 3 cycles (user can type roughly 80 wpm) 
+4. keep same number 80 words but reduce time to 50 seconds (decrease by 10 seconds each cycle)
+
+For Visuals: 
+1. Minimalistic feel (side scroller) 
+2. each completed word moves model to the right to progress through side scroller
