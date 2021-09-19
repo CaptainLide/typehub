@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import time   
 
 def countdown(t):
@@ -13,7 +12,3 @@ def countdown(t):
 t = input("Enter the time in seconds: ")
 
 countdown(int(t))
-=======
-from callwords import words
-
->>>>>>> 88fe548468a38754c5703ff41498da048b59b41b
