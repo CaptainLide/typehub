@@ -1,8 +1,8 @@
-list = []
+wlist = []
 wordlist = open('wordbank.txt').read().split()
 
 for words in wordlist:
-    if words in list:
+    if words in wlist:
         continue
     else:
-        list.append(words)
+        wlist.append(words)
