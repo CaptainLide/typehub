@@ -3,6 +3,11 @@ import time
 import requests
 import math
 import random
+import time
+import signal
+import sys
+import os
+
 from time import sleep
 nounlist = open('nouns.txt').read().splitlines()
 verblist = open('verbs.txt').read().splitlines()
@@ -13,6 +18,17 @@ count = 0
 allWords = []
 URL = 'https://random-word-api.herokuapp.com/word'
 PARAMS = {'number': 1, 'swear': 0}
+
+# capture CTRL + C or other signal here
+
+
+def goodbye(signal, frame):
+    print('CTRL-C detected. Goodbye! ')
+    sleep(3)
+    sys.exit(0)
+
+
+signal.signal(signal.SIGINT, goodbye)
 
 
 def getWord():
@@ -103,7 +119,7 @@ if (mode == 1):
         difficulty = int(
             input(f"How many words in {t} seconds would you like to achieve? "))
 
-        a = int(input("what level of accuracy would you like to aim for? "))
+        a = int(input("What level of accuracy (as a percentage out of 100 without the %, i.e 95 for 95%) would you like to aim for? "))
 
         mistakes = mistakesAllowed(difficulty, a)
         print(f'you can make {mistakes} mistakes')
