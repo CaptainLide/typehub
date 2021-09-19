@@ -1,7 +1,9 @@
 import time
+import time
 import requests
 import math
 import random
+from time import sleep
 nounlist = open('nouns.txt').read().splitlines()
 verblist = open('verbs.txt').read().splitlines()
 objectlist = open('objects.txt').read().splitlines()
@@ -76,7 +78,7 @@ if (mode == 1):
             if (timeLeft(clock, t) <= 0):
                 print('Sorry, time ran out! Try again.')
                 game_on = False
-                getAllWords()
+                sleep(5)  # Time in seconds
 
             else:
                 user_input = input(s + "\n")
@@ -85,36 +87,26 @@ if (mode == 1):
                     if count == difficulty:
                         print('Congratulations, you won!')
                         game_on = False
+                        sleep(5)  # Time in seconds
 
                     else:
                         print(
-<<<<<<< HEAD
                             f"\n you have {timeLeft(clock, t)}s left to complete {difficulty - count} sentences")
-=======
-                            f"\n You have {timeLeft(clock, t)}s left to complete {difficulty - count} sentences")
->>>>>>> 6b03c7fce7e4a0349749fb7ab9b0f8a81a5ad0df
 
                 else:
                     print('Sorry, that\'s wrong.')
                     game_on = False
-
+                    sleep(5)  # Time in seconds
     if (s == 2):
         t = int(input("Enter the time in seconds: "))
 
         difficulty = int(
             input(f"How many words in {t} seconds would you like to achieve? "))
 
-<<<<<<< HEAD
         a = int(input("what level of accuracy would you like to aim for? "))
 
         mistakes = mistakesAllowed(difficulty, a)
         print(f'you can make {mistakes} mistakes')
-=======
-        a = int(input("What level of accuracy (percentage out of 100 without the %) would you like to aim for? "))
-
-        mistakes = mistakesAllowed(difficulty, a)
-        print(f'You can make {mistakes} mistakes')
->>>>>>> 6b03c7fce7e4a0349749fb7ab9b0f8a81a5ad0df
         mistakeCount = 0
         while game_on:
             word = getWord()
@@ -124,6 +116,7 @@ if (mode == 1):
                 print('Sorry, time ran out! Try again.')
                 game_on = False
                 getAllWords()
+                sleep(10)  # Time in seconds
 
             else:
                 user_input = input(word + "\n")
@@ -133,14 +126,11 @@ if (mode == 1):
                         print('Congratulations, you won!')
                         game_on = False
                         getAllWords()
+                        sleep(10)  # Time in seconds
 
                     else:
                         print(
-<<<<<<< HEAD
                             f"\n you have {timeLeft(clock, t)}s left to complete {difficulty - count} words")
-=======
-                            f"\n You have {timeLeft(clock, t)}s left to complete {difficulty - count} words")
->>>>>>> 6b03c7fce7e4a0349749fb7ab9b0f8a81a5ad0df
 
                 else:
                     print('Sorry, that\'s wrong.')
@@ -149,13 +139,11 @@ if (mode == 1):
                         print('You\'ve lost')
                         game_on = False
                         getAllWords()
+                        sleep(10)  # Time in seconds
+
                     else:
                         print(
-<<<<<<< HEAD
                             f'you\'ve made {mistakeCount} mistakes out of {mistakes}')
-=======
-                            f'You\'ve made {mistakeCount} mistakes out of {mistakes}')
->>>>>>> 6b03c7fce7e4a0349749fb7ab9b0f8a81a5ad0df
 
 elif (mode == 2):
 
@@ -181,7 +169,7 @@ elif (mode == 2):
                         return True
                     else:
                         print(
-                            f"You have {timeLeft(clock, t)}s left to complete {difficulty - count} words")
+                            f"you have {timeLeft(clock, t)}s left to complete {difficulty - count} words")
 
                 else:
                     print('Sorry, that\'s wrong.')
@@ -191,7 +179,7 @@ elif (mode == 2):
                         game_on = False
                     else:
                         print(
-                            f'You\'ve made {mistakeCount} mistakes out of {mistakes}')
+                            f'you\'ve made {mistakeCount} mistakes out of {mistakes}')
 
     hardness = int(input('Please choose your starting level.\n Enter 0 for demo mode. \n Enter 1 for level 1 (30 WPM). \n Enter 2 for level 2 (40 WPM). \n Enter 3 for level 3 (50 WPM). \n Enter 4 for level 4 (60 WPM). \n'))
 
@@ -209,7 +197,7 @@ elif (mode == 2):
         else:
             difficulty = 5
         mistakes = mistakesAllowed(difficulty, 95)
-        print(f'You can make {mistakes} mistakes')
+        print(f'you can make {mistakes} mistakes')
 
         print(f'Round 1: Type {difficulty} words in 60s')
         success = game(t, difficulty, mistakes)
@@ -218,7 +206,7 @@ elif (mode == 2):
             t = 60
             difficulty = round(difficulty * 1.15)
             mistakes = mistakesAllowed(difficulty, 95)
-            print(f'You can make {mistakes} mistakes')
+            print(f'you can make {mistakes} mistakes')
             print(f'Round {rounds}: Type {difficulty} words in 60s')
             success = game(t, difficulty, mistakes)
 
@@ -237,10 +225,14 @@ elif (mode == 2):
             if (success):
                 print('WINNER \n')
                 getAllWords()
+                sleep(10)  # Time in seconds
             else:
                 print('Good try! \n')
                 getAllWords()
+                sleep(10)  # Time in seconds
+
         else:
             getAllWords()
+            sleep(10)  # Time in seconds
 
     start()
