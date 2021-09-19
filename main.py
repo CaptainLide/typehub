@@ -1,4 +1,6 @@
 import time   
+from callwords import words
+
 
 def countdown(t):
     while t:
@@ -9,6 +11,19 @@ def countdown(t):
         time.sleep(1)
         t -= 1
     print('Time\'s up!')
+
+
 t = input("Enter the time in seconds: ")
 
 countdown(int(t))
+
+game_on = True
+count = 0
+
+while game_on:
+    for word in words:
+        user_input = input(word)
+        count += 1
+
+    if count == len(words):
+        game_on = False
