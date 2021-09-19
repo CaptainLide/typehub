@@ -1,4 +1,7 @@
 import os 
 cmd = 'curl https://random-word-api.herokuapp.com/word?number=20'
-words = os.system(cmd)
-print(words) 
+words = []
+
+for word in os.system(cmd):
+    words.append(word)
+print(words)
