@@ -27,7 +27,7 @@ for _ in range(5):
 
 while game_on:
     for word in words:
-        user_input = input(word)
+        user_input = input(word + "\n")
         if user_input.lower() == word.lower():
             count += 1
         else:
