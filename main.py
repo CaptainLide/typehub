@@ -1,6 +1,7 @@
 import time
 import subprocess
 import random
+from wordlist import wordlist
 
 
 def countdown(t):
@@ -21,6 +22,8 @@ game_on = True
 count = 0
 words = []
 
+for _ in range(5):
+    words.append(random.choice(wordlist))
 
 while game_on:
     for word in words:
@@ -28,7 +31,7 @@ while game_on:
         if user_input.lower() == word.lower():
             count += 1
         else:
-            words.append(random.choice())
+            words.append(random.choice(wordlist))
 
     if count == len(words):
         game_on = False
