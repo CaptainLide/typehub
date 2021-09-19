@@ -2,6 +2,10 @@ import time
 import time
 import requests
 import math
+import random
+nounlist = open('nouns.txt').read().splitlines()
+verblist = open('verbs.txt').read().splitlines()
+objectlist = open('objects.txt').read().splitlines()
 
 game_on = True
 count = 0
@@ -16,6 +20,22 @@ def getWord():
     data = r.json()
     allWords.append(data[0])
     return (data[0])
+
+
+def makeSentence():
+    noun = random.choice(nounlist)
+    object = random.choice(nounlist)
+    while (noun == object):
+        object = random.choice(objectlist)
+
+    verb = random.choice(verblist)
+    URL = 'https://lt-nlgservice.herokuapp.com/rest/english/realise/'
+    PARAMS = {"subject": noun, "verb": verb, "object": object}
+
+    r = requests.get(url=URL, params=PARAMS)
+    # extracting data in json format
+    data = r.json()
+    return(data['sentence'])
 
 
 def startClock():
@@ -41,51 +61,83 @@ def mistakesAllowed(number, accuracy):
     return (math.floor(number-mistakes))
 
 
-mode = int(input('Welcome to TypeHub, your one stop shop for typing faster! \n Please enter 1 to play creative mode (choose your own time and number of words) \n or \n 2 to play classic mode (complete a set number of words in a set amount of time) \n'))
+mode = int(input('Welcome to typehub, your one stop shop for typing faster! \n Please enter 1 to play creative mode (choose your own time and number of words) \n or \n 2 to play classic mode (complete a set number of words in a set amount of time) \n'))
 
 if (mode == 1):
-    t = int(input("Enter the time in seconds: "))
+    s = int(input("Enter 1 to use sentences and 2 to use indvidual words: "))
+    if (s == 1):
+        t = int(input("Enter the time in seconds: "))
+        difficulty = int(
+            input(f"How many sentences in {t} seconds would you like to achieve? "))
 
-    difficulty = int(
-        input(f"How many words in {t} seconds would you like to achieve? "))
-
-    a = int(input("what level of accuracy would you like to aim for? "))
-
-    mistakes = mistakesAllowed(difficulty, a)
-    print(f'you can make {mistakes} mistakes')
-    mistakeCount = 0
-    while game_on:
-        word = getWord()
-        if (count == 0):
-            clock = startClock()
-        if (timeLeft(clock, t) <= 0):
-            print('Sorry, time ran out! Try again.')
-            game_on = False
-            getAllWords()
-
-        else:
-            user_input = input(word + "\n")
-            if user_input.lower() == word.lower():
-                count += 1
-                if count == difficulty:
-                    print('Congratulations, you won!')
-                    game_on = False
-                    getAllWords()
-
-                else:
-                    print(
-                        f"\n you have {timeLeft(clock, t)}s left to complete {difficulty - count} words")
+        while game_on:
+            s = makeSentence()
+            if (count == 0):
+                clock = startClock()
+            if (timeLeft(clock, t) <= 0):
+                print('Sorry, time ran out! Try again.')
+                game_on = False
+                getAllWords()
 
             else:
-                print('Sorry, that\'s wrong.')
-                mistakeCount += 1
-                if (mistakeCount >= mistakes):
-                    print('You\'ve lost')
-                    game_on = False
-                    getAllWords()
+                user_input = input(s + "\n")
+                if user_input.lower() == s.lower():
+                    count += 1
+                    if count == difficulty:
+                        print('Congratulations, you won!')
+                        game_on = False
+
+                    else:
+                        print(
+                            f"\n you have {timeLeft(clock, t)}s left to complete {difficulty - count} sentences")
+
                 else:
-                    print(
-                        f'you\'ve made {mistakeCount} mistakes out of {mistakes}')
+                    print('Sorry, that\'s wrong.')
+                    game_on = False
+
+    if (s == 2):
+        t = int(input("Enter the time in seconds: "))
+
+        difficulty = int(
+            input(f"How many words in {t} seconds would you like to achieve? "))
+
+        a = int(input("what level of accuracy would you like to aim for? "))
+
+        mistakes = mistakesAllowed(difficulty, a)
+        print(f'you can make {mistakes} mistakes')
+        mistakeCount = 0
+        while game_on:
+            word = getWord()
+            if (count == 0):
+                clock = startClock()
+            if (timeLeft(clock, t) <= 0):
+                print('Sorry, time ran out! Try again.')
+                game_on = False
+                getAllWords()
+
+            else:
+                user_input = input(word + "\n")
+                if user_input.lower() == word.lower():
+                    count += 1
+                    if count == difficulty:
+                        print('Congratulations, you won!')
+                        game_on = False
+                        getAllWords()
+
+                    else:
+                        print(
+                            f"\n you have {timeLeft(clock, t)}s left to complete {difficulty - count} words")
+
+                else:
+                    print('Sorry, that\'s wrong.')
+                    mistakeCount += 1
+                    if (mistakeCount >= mistakes):
+                        print('You\'ve lost')
+                        game_on = False
+                        getAllWords()
+                    else:
+                        print(
+                            f'you\'ve made {mistakeCount} mistakes out of {mistakes}')
 
 elif (mode == 2):
 
