@@ -232,12 +232,12 @@ elif (mode == 2):
             rounds = 1
             t = 50
             print(f'Round 1: Type {difficulty} words in 60s')
-            success = game(t, difficulty)
+            success = game(t, difficulty, mistakes)
             while (success and t > 10):
                 rounds += 1
                 t -= 10
                 print(f'Round {rounds}: Type {difficulty} words in {t}s')
-                success = game(t, difficulty)
+                success = game(t, difficulty, mistakes)
             if (success):
                 print('WINNER \n')
                 getAllWords()
