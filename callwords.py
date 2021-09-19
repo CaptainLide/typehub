@@ -8,5 +8,5 @@
 
 import subprocess
 cmd = "curl -s https://random-word-api.herokuapp.com/word?number=20"
-words = subprocess.check_output(cmd, shell=True).rstrip()
+words = subprocess.getoutput(cmd)
 print(words)
