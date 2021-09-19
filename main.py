@@ -11,8 +11,6 @@ def countdown(t):
         time.sleep(1)
         t -= 1
     print('Time\'s up!')
-
-
 t = input("Enter the time in seconds: ")
 
 countdown(int(t))
