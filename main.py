@@ -22,10 +22,13 @@ game_on = True
 count = 0
 words = []
 
-for _ in range(5):
+difficulty = input("how many words in 60 seconds would you like to achieve? ")
+
+for _ in range(int(difficulty)):
     words.append(random.choice(wordlist))
 
 while game_on:
+    win_con = len(words)
     for word in words:
         user_input = input(word + "\n")
         if user_input.lower() == word.lower():
@@ -33,5 +36,5 @@ while game_on:
         else:
             words.append(random.choice(wordlist))
 
-    if count == len(words):
+    if count == win_con:
         game_on = False
