@@ -150,7 +150,6 @@ if (mode == 1):
 
                 else:
                     print('Sorry, that\'s wrong.')
-                    mistakeCount += 1
                     if (mistakeCount >= mistakes):
                         print('You\'ve lost')
                         game_on = False
@@ -158,6 +157,7 @@ if (mode == 1):
                         sleep(10)  # Time in seconds
 
                     else:
+                        mistakeCount += 1
                         print(
                             f'you\'ve made {mistakeCount} mistakes out of {mistakes}')
 
@@ -189,11 +189,11 @@ elif (mode == 2):
 
                 else:
                     print('Sorry, that\'s wrong.')
-                    mistakeCount += 1
                     if (mistakeCount >= mistakes):
                         print('You\'ve lost')
                         game_on = False
                     else:
+                        mistakeCount += 1
                         print(
                             f'you\'ve made {mistakeCount} mistakes out of {mistakes}')
 
