@@ -41,7 +41,7 @@ def mistakesAllowed(number, accuracy):
     return (math.floor(number-mistakes))
 
 
-mode = int(input('Welcome to typehub, your one stop shop for typing faster! \n Please enter 1 to play creative mode (choose your own time and number of words) \n or \n 2 to play classic mode (complete a set number of words in a set amount of time) \n'))
+mode = int(input('Welcome to TypeHub, your one stop shop for typing faster! \n Please enter 1 to play creative mode (choose your own time and number of words) \n or \n 2 to play classic mode (complete a set number of words in a set amount of time) \n'))
 
 if (mode == 1):
     t = int(input("Enter the time in seconds: "))
