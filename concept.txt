@@ -4,6 +4,7 @@ Typing Game concept:
 2. If user completes x number of words within 60 seconds user then proceeds to next level. 
 3. x number of words is multiple by 1.15 per completion. 
 4. after 3 cycles required number of seconds is lowered. 
+Extra: 95% accuracy so user's can make a few mistakes, 4 levels with different WPM goals, user gets list of words used after
 
 
 For Example:
@@ -12,6 +13,9 @@ For Example:
 2. user then proceeds to complete 75 in 60 seconds after completion
 3. after 3 cycles (user can type roughly 80 wpm) 
 4. keep same number 80 words but reduce time to 50 seconds (decrease by 10 seconds each cycle)
+
+Creative:
+User chooses own time limit, words to use, and accuracy
 
 For Visuals: 
 1. Minimalistic feel (side scroller) 
