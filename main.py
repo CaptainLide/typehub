@@ -2,7 +2,7 @@ import time
 import subprocess
 import random
 from wordlist import wordlist
-
+import keyboard
 
 def countdown(t):
     while t:
@@ -22,7 +22,7 @@ game_on = True
 count = 0
 words = []
 
-difficulty = input("how many words in 60 seconds would you like to achieve? ")
+difficulty = input("how many sentences in 60 seconds would you like to achieve? ")
 
 for _ in range(int(difficulty)):
     words.append(random.choice(wordlist))
