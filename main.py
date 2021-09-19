@@ -28,7 +28,6 @@ for _ in range(int(difficulty)):
     words.append(random.choice(wordlist))
 
 while game_on:
-    win_con = len(words)
     for word in words:
         user_input = input(word + "\n")
         if user_input.lower() == word.lower():
@@ -36,5 +35,5 @@ while game_on:
         else:
             words.append(random.choice(wordlist))
 
-    if count == win_con:
+    if count == difficulty:
         game_on = False
